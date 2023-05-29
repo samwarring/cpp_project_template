@@ -1,0 +1,143 @@
+{
+    "version": 5,
+    "configurePresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "binaryDir": "build/${presetName}",
+            "toolchainFile": "vcpkg/scripts/buildsystems/vcpkg.cmake",
+            "cacheVariables": {
+                "CPP_PROJECT_TEMPLATE_TEST": "ON"
+            }
+        },
+        {
+            "name": "gcc",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "gcc",
+                "CMAKE_CXX_COMPILER": "g++",
+                "CMAKE_C_FLAGS": "-Wall -Wextra -Werror",
+                "CMAKE_CXX_FLAGS": "-Wall -Wextra -Werror"
+            }
+        },
+        {
+            "name": "debug",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Debug"
+            }
+        },
+        {
+            "name": "release",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "Release"
+            }
+        },
+        {
+            "name": "relwithdebinfo",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "RelWithDebInfo"
+            }
+        },
+        {
+            "name": "minsizerel",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_BUILD_TYPE": "MinSizeRel"
+            }
+        },
+        {
+            "name": "gcc-debug",
+            "displayName": "GCC Debug",
+            "inherits": [
+                "base",
+                "gcc",
+                "debug"
+            ]
+        },
+        {
+            "name": "gcc-release",
+            "displayName": "GCC Release",
+            "inherits": [
+                "base",
+                "gcc",
+                "release"
+            ]
+        },
+        {
+            "name": "gcc-relwithdebinfo",
+            "displayName": "GCC RelWithDebInfo",
+            "inherits": [
+                "base",
+                "gcc",
+                "relwithdebinfo"
+            ]
+        },
+        {
+            "name": "gcc-minsizerel",
+            "displayName": "GCC MinSizeRel",
+            "inherits": [
+                "base",
+                "gcc",
+                "minsizerel"
+            ]
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "gcc-debug",
+            "configurePreset": "gcc-debug"
+        },
+        {
+            "name": "gcc-release",
+            "configurePreset": "gcc-release"
+        },
+        {
+            "name": "gcc-relwithdebinfo",
+            "configurePreset": "gcc-relwithdebinfo"
+        },
+        {
+            "name": "gcc-minsizerel",
+            "configurePreset": "gcc-minsizerel"
+        }
+    ],
+    "testPresets": [
+        {
+            "name": "base",
+            "hidden": true,
+            "output": {
+                "outputOnFailure": true
+            }
+        },
+        {
+            "name": "gcc-debug",
+            "configurePreset": "gcc-debug",
+            "inherits": [
+                "base"
+            ]
+        },
+        {
+            "name": "gcc-release",
+            "configurePreset": "gcc-release",
+            "inherits": [
+                "base"
+            ]
+        },
+        {
+            "name": "gcc-relwithdebinfo",
+            "configurePreset": "gcc-relwithdebinfo",
+            "inherits": [
+                "base"
+            ]
+        },
+        {
+            "name": "gcc-minsizerel",
+            "configurePreset": "gcc-minsizerel",
+            "inherits": [
+                "base"
+            ]
+        }
+    ]
+}

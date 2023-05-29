@@ -1,0 +1,2 @@
+add_subdirectory(project_lib)
+add_subdirectory(project_test)
