@@ -143,34 +143,42 @@
     "buildPresets": [
         {
             "name": "gcc-debug",
+            "displayName": "GCC Debug",
             "configurePreset": "gcc-debug"
         },
         {
             "name": "gcc-release",
+            "displayName": "GCC Release",
             "configurePreset": "gcc-release"
         },
         {
             "name": "gcc-relwithdebinfo",
+            "displayName": "GCC RelWithDebInfo",
             "configurePreset": "gcc-relwithdebinfo"
         },
         {
             "name": "gcc-minsizerel",
+            "displayName": "GCC MinSizeRel",
             "configurePreset": "gcc-minsizerel"
         },
         {
             "name": "msvc-debug",
+            "displayName": "MSVC Debug",
             "configurePreset": "msvc-debug"
         },
         {
             "name": "msvc-release",
+            "displayName": "MSVC Release",
             "configurePreset": "msvc-release"
         },
         {
             "name": "msvc-relwithdebinfo",
+            "displayName": "MSVC RelWithDebInfo",
             "configurePreset": "msvc-relwithdebinfo"
         },
         {
             "name": "msvc-minsizerel",
+            "displayName": "MSVC MinSizeRel",
             "configurePreset": "msvc-minsizerel"
         }
     ],
@@ -184,6 +192,7 @@
         },
         {
             "name": "gcc-debug",
+            "displayName": "GCC Debug",
             "configurePreset": "gcc-debug",
             "inherits": [
                 "base"
@@ -191,6 +200,7 @@
         },
         {
             "name": "gcc-release",
+            "displayName": "GCC Release",
             "configurePreset": "gcc-release",
             "inherits": [
                 "base"
@@ -198,6 +208,7 @@
         },
         {
             "name": "gcc-relwithdebinfo",
+            "displayName": "GCC RelWithDebInfo",
             "configurePreset": "gcc-relwithdebinfo",
             "inherits": [
                 "base"
@@ -205,6 +216,7 @@
         },
         {
             "name": "gcc-minsizerel",
+            "displayName": "GCC MinSizeRel",
             "configurePreset": "gcc-minsizerel",
             "inherits": [
                 "base"
@@ -212,6 +224,7 @@
         },
         {
             "name": "msvc-debug",
+            "displayName": "MSVC Debug",
             "configurePreset": "msvc-debug",
             "inherits": [
                 "base"
@@ -219,6 +232,7 @@
         },
         {
             "name": "msvc-release",
+            "displayName": "MSVC Release",
             "configurePreset": "msvc-release",
             "inherits": [
                 "base"
@@ -226,6 +240,7 @@
         },
         {
             "name": "msvc-relwithdebinfo",
+            "displayName": "MSVC RelWithDebInfo",
             "configurePreset": "msvc-relwithdebinfo",
             "inherits": [
                 "base"
@@ -233,6 +248,7 @@
         },
         {
             "name": "msvc-minsizerel",
+            "displayName": "MSVC MinSizeRel",
             "configurePreset": "msvc-minsizerel",
             "inherits": [
                 "base"
