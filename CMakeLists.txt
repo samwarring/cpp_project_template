@@ -7,12 +7,8 @@ option(CPP_PROJECT_TEMPLATE_TEST "Enable unit-tests" OFF)
 # Enable unit-testing
 if(CPP_PROJECT_TEMPLATE_TEST)
   enable_testing()
-endif()
-
-# Locate dependencies
-if(CPP_PROJECT_TEMPLATE_TEST)
-  find_package(Catch2 CONFIG REQUIRED)
-  include(Catch)
+  find_package(GTest CONFIG REQUIRED)
+  include(GoogleTest)
 endif()
 
 add_subdirectory(src)
