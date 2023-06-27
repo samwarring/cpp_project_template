@@ -40,6 +40,16 @@
             }
         },
         {
+            "name": "clang",
+            "hidden": true,
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "clang",
+                "CMAKE_CXX_COMPILER": "clang++",
+                "CMAKE_C_FLAGS": "-Wall -Wextra -Werror",
+                "CMAKE_CXX_FLAGS": "-Wall -Wextra -Werror"
+            }
+        },
+        {
             "name": "debug",
             "hidden": true,
             "cacheVariables": {
@@ -104,6 +114,42 @@
             ]
         },
         {
+            "name": "clang-debug",
+            "displayName": "Clang Debug",
+            "inherits": [
+                "base",
+                "clang",
+                "debug"
+            ]
+        },
+        {
+            "name": "clang-release",
+            "displayName": "Clang Release",
+            "inherits": [
+                "base",
+                "clang",
+                "release"
+            ]
+        },
+        {
+            "name": "clang-relwithdebinfo",
+            "displayName": "Clang RelWithDebInfo",
+            "inherits": [
+                "base",
+                "clang",
+                "relwithdebinfo"
+            ]
+        },
+        {
+            "name": "clang-minsizerel",
+            "displayName": "Clang MinSizeRel",
+            "inherits": [
+                "base",
+                "clang",
+                "minsizerel"
+            ]
+        },
+        {
             "name": "msvc-debug",
             "displayName": "MSVC Debug",
             "inherits": [
@@ -162,6 +208,26 @@
             "configurePreset": "gcc-minsizerel"
         },
         {
+            "name": "clang-debug",
+            "displayName": "Clang Debug",
+            "configurePreset": "clang-debug"
+        },
+        {
+            "name": "clang-release",
+            "displayName": "Clang Release",
+            "configurePreset": "clang-release"
+        },
+        {
+            "name": "clang-relwithdebinfo",
+            "displayName": "Clang RelWithDebInfo",
+            "configurePreset": "clang-relwithdebinfo"
+        },
+        {
+            "name": "clang-minsizerel",
+            "displayName": "Clang MinSizeRel",
+            "configurePreset": "clang-minsizerel"
+        },
+        {
             "name": "msvc-debug",
             "displayName": "MSVC Debug",
             "configurePreset": "msvc-debug"
@@ -218,6 +284,38 @@
             "name": "gcc-minsizerel",
             "displayName": "GCC MinSizeRel",
             "configurePreset": "gcc-minsizerel",
+            "inherits": [
+                "base"
+            ]
+        },
+        {
+            "name": "clang-debug",
+            "displayName": "Clang Debug",
+            "configurePreset": "clang-debug",
+            "inherits": [
+                "base"
+            ]
+        },
+        {
+            "name": "clang-release",
+            "displayName": "Clang Release",
+            "configurePreset": "clang-release",
+            "inherits": [
+                "base"
+            ]
+        },
+        {
+            "name": "clang-relwithdebinfo",
+            "displayName": "Clang RelWithDebInfo",
+            "configurePreset": "clang-relwithdebinfo",
+            "inherits": [
+                "base"
+            ]
+        },
+        {
+            "name": "clang-minsizerel",
+            "displayName": "Clang MinSizeRel",
+            "configurePreset": "clang-minsizerel",
             "inherits": [
                 "base"
             ]
