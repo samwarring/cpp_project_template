@@ -8,7 +8,9 @@
             "binaryDir": "build/${presetName}",
             "toolchainFile": "vcpkg/scripts/buildsystems/vcpkg.cmake",
             "cacheVariables": {
-                "CPP_PROJECT_TEMPLATE_TEST": "ON"
+                "CPP_PROJECT_TEMPLATE_TEST": "ON",
+                "CMAKE_C_FLAGS": "$env{MY_C_FLAGS} $env{MY_C_FLAGS_COVERAGE}",
+                "CMAKE_CXX_FLAGS": "$env{MY_CXX_FLAGS} $env{MY_CXX_FLAGS_COVERAGE}"
             }
         },
         {
@@ -16,9 +18,11 @@
             "hidden": true,
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "gcc",
-                "CMAKE_CXX_COMPILER": "g++",
-                "CMAKE_C_FLAGS": "-Wall -Wextra -Werror",
-                "CMAKE_CXX_FLAGS": "-Wall -Wextra -Werror"
+                "CMAKE_CXX_COMPILER": "g++"
+            },
+            "environment": {
+                "MY_C_FLAGS": "-Wall -Wextra -Werror",
+                "MY_CXX_FLAGS": "-Wall -Wextra -Werror"
             }
         },
         {
@@ -26,9 +30,11 @@
             "hidden": true,
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "cl",
-                "CMAKE_CXX_COMPILER": "cl",
-                "CMAKE_C_FLAGS": "/W4 /WX /EHsc",
-                "CMAKE_CXX_FLAGS": "/W4 /WX /EHsc"
+                "CMAKE_CXX_COMPILER": "cl"
+            },
+            "environment": {
+                "MY_C_FLAGS": "/W4 /WX /EHsc",
+                "MY_CXX_FLAGS": "/W4 /WX /EHsc"
             },
             "architecture": {
                 "strategy": "external",
@@ -44,9 +50,11 @@
             "hidden": true,
             "cacheVariables": {
                 "CMAKE_C_COMPILER": "clang",
-                "CMAKE_CXX_COMPILER": "clang++",
-                "CMAKE_C_FLAGS": "-Wall -Wextra -Werror",
-                "CMAKE_CXX_FLAGS": "-Wall -Wextra -Werror"
+                "CMAKE_CXX_COMPILER": "clang++"
+            },
+            "environment": {
+                "MY_C_FLAGS": "-Wall -Wextra -Werror",
+                "MY_CXX_FLAGS": "-Wall -Wextra -Werror"
             }
         },
         {
@@ -75,6 +83,14 @@
             "hidden": true,
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "MinSizeRel"
+            }
+        },
+        {
+            "name": "gcov",
+            "hidden": true,
+            "environment": {
+                "MY_C_FLAGS_COVERAGE": "--coverage",
+                "MY_CXX_FLAGS_COVERAGE": "--coverage"
             }
         },
         {
@@ -114,6 +130,16 @@
             ]
         },
         {
+            "name": "gcc-coverage",
+            "displayName": "GCC Coverage",
+            "inherits": [
+                "base",
+                "gcc",
+                "debug",
+                "gcov"
+            ]
+        },
+        {
             "name": "clang-debug",
             "displayName": "Clang Debug",
             "inherits": [
@@ -147,6 +173,16 @@
                 "base",
                 "clang",
                 "minsizerel"
+            ]
+        },
+        {
+            "name": "clang-coverage",
+            "displayName": "Clang Coverage",
+            "inherits": [
+                "base",
+                "clang",
+                "debug",
+                "gcov"
             ]
         },
         {
@@ -208,6 +244,11 @@
             "configurePreset": "gcc-minsizerel"
         },
         {
+            "name": "gcc-coverage",
+            "displayName": "GCC Coverage",
+            "configurePreset": "gcc-coverage"
+        },
+        {
             "name": "clang-debug",
             "displayName": "Clang Debug",
             "configurePreset": "clang-debug"
@@ -226,6 +267,11 @@
             "name": "clang-minsizerel",
             "displayName": "Clang MinSizeRel",
             "configurePreset": "clang-minsizerel"
+        },
+        {
+            "name": "clang-coverage",
+            "displayName": "Clang Coverage",
+            "configurePreset": "Clang-coverage"
         },
         {
             "name": "msvc-debug",
@@ -289,6 +335,14 @@
             ]
         },
         {
+            "name": "gcc-coverage",
+            "displayName": "GCC Coverage",
+            "configurePreset": "gcc-coverage",
+            "inherits": [
+                "base"
+            ]
+        },
+        {
             "name": "clang-debug",
             "displayName": "Clang Debug",
             "configurePreset": "clang-debug",
@@ -316,6 +370,14 @@
             "name": "clang-minsizerel",
             "displayName": "Clang MinSizeRel",
             "configurePreset": "clang-minsizerel",
+            "inherits": [
+                "base"
+            ]
+        },
+        {
+            "name": "clang-coverage",
+            "displayName": "Clang Coverage",
+            "configurePreset": "clang-coverage",
             "inherits": [
                 "base"
             ]
