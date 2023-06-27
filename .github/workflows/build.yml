@@ -24,9 +24,13 @@ jobs:
         with:
           submodules: recursive
 
-      - name: Install required tools
+      - name: Install required tools (apt)
         if: runner.os == 'Linux'
-        run: scripts/install_tools.sh
+        run: scripts/install_tools_apt.sh
+
+      - name: Install required tools (brew)
+        if: runner.os == 'MacOS'
+        run: scripts/install_tools_brew.sh
       
       - name: Setup Visual Studio environment
         if: runner.os == 'Windows'
