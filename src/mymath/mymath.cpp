@@ -1,6 +1,6 @@
 #include <mymath.hpp>
 
-namespace project_lib {
+namespace mymath {
 
 std::tuple<std::complex<double>, std::complex<double>>
 quadratic(double a, double b, double c) {
@@ -12,4 +12,4 @@ quadratic(double a, double b, double c) {
   return {r1, r2};
 }
 
-} // namespace project_lib
+} // namespace mymath

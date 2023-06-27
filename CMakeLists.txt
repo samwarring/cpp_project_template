@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.22)
-project(cpp_project_template VERSION 0.1.0)
-option(CPP_PROJECT_TEMPLATE_TEST "Enable unit-tests" OFF)
+project(mymath VERSION 0.1.0)
+option(${PROJECT_NAME}_ENABLE_TEST "Enable unit-tests" OFF)
 
 add_subdirectory(src)
-if(CPP_PROJECT_TEMPLATE_TEST)
+if(${PROJECT_NAME}_ENABLE_TEST)
   enable_testing()
   add_subdirectory(test)
 endif()
