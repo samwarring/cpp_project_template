@@ -270,7 +270,7 @@
             "displayName": "MSVC Sanitized (ASan)",
             "inherits": [
                 "base",
-                "clang",
+                "msvc",
                 "debug",
                 "msvc-sanitizer-flags"
             ]
