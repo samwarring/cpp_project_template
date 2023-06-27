@@ -8,10 +8,10 @@
             "binaryDir": "build/${presetName}",
             "toolchainFile": "vcpkg/scripts/buildsystems/vcpkg.cmake",
             "cacheVariables": {
-                "CPP_PROJECT_TEMPLATE_TEST": "ON",
+                "mymath_ENABLE_TEST": "ON",
                 "CMAKE_C_FLAGS": "$env{MY_C_FLAGS} $env{MY_C_FLAGS_COVERAGE}",
                 "CMAKE_CXX_FLAGS": "$env{MY_CXX_FLAGS} $env{MY_CXX_FLAGS_COVERAGE}",
-                "CMAKE_INSTALL_PREFIX": "${binaryDir}installed"
+                "CMAKE_INSTALL_PREFIX": "build/${presetName}/installed"
             }
         },
         {
@@ -272,7 +272,7 @@
         {
             "name": "clang-coverage",
             "displayName": "Clang Coverage",
-            "configurePreset": "Clang-coverage"
+            "configurePreset": "clang-coverage"
         },
         {
             "name": "msvc-debug",
