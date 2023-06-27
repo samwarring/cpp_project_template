@@ -78,7 +78,7 @@
             "name": "clang-sanitizer-flags",
             "hidden": true,
             "inherits": [
-                "gcc-asan"
+                "gcc-sanitizer-flags"
             ]
         },
         {
@@ -226,7 +226,7 @@
                 "base",
                 "clang",
                 "debug",
-                "clang-sanitzer-flags"
+                "clang-sanitizer-flags"
             ]
         },
         {
@@ -272,7 +272,7 @@
                 "base",
                 "clang",
                 "debug",
-                "msvc-sanitzer-flags"
+                "msvc-sanitizer-flags"
             ]
         }
     ],
