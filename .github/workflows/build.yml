@@ -1,0 +1,33 @@
+name: Build
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  build:
+    strategy:
+      matrix:
+        variant:
+          - name: Linux Debug
+            os: ubuntu-latest
+            preset: gcc-debug
+          - name: Windows Debug
+            os: windows-latest
+            preset: msvc-debug
+    name: Build ${{ matrix.variant.name }}
+    runs-on: ${{ matrix.variant.os }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Setup Visual Studio environment
+        if: runner.os == 'Windows'
+        uses: ilammy/msvc-dev-cmd@v1
+
+      - name: Configure
+        run: cmake --preset ${{ matrix.variant.preset }}
+
+      - name: Build
+        run: cmake --build --preset ${{ matrix.variant.preset }}
+
+      - name: Test
+        run: ctest --preset ${{ matrix.variant.preset }}
