@@ -9,13 +9,13 @@ jobs:
         variant:
           - name: Linux Debug
             os: ubuntu-latest
-            preset: gcc-debug
+            preset: gcc-sanitized
           - name: Windows Debug
             os: windows-latest
-            preset: msvc-debug
+            preset: msvc-sanitized
           - name: MacOS Debug
             os: macos-latest
-            preset: clang-debug
+            preset: clang-sanitized
     name: Build ${{ matrix.variant.name }}
     runs-on: ${{ matrix.variant.os }}
     steps:

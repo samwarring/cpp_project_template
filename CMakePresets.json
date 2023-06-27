@@ -9,8 +9,8 @@
             "toolchainFile": "vcpkg/scripts/buildsystems/vcpkg.cmake",
             "cacheVariables": {
                 "mymath_ENABLE_TEST": "ON",
-                "CMAKE_C_FLAGS": "$env{MY_C_FLAGS} $env{MY_C_FLAGS_COVERAGE}",
-                "CMAKE_CXX_FLAGS": "$env{MY_CXX_FLAGS} $env{MY_CXX_FLAGS_COVERAGE}",
+                "CMAKE_C_FLAGS": "$env{MY_C_FLAGS} $env{MY_C_FLAGS_COVERAGE} $env{MY_C_FLAGS_SANITIZER}",
+                "CMAKE_CXX_FLAGS": "$env{MY_CXX_FLAGS} $env{MY_CXX_FLAGS_COVERAGE} $env{MY_CXX_FLAGS_SANITIZER}",
                 "CMAKE_INSTALL_PREFIX": "build/${presetName}/installed"
             }
         },
@@ -59,6 +59,37 @@
             }
         },
         {
+            "name": "gcov",
+            "hidden": true,
+            "environment": {
+                "MY_C_FLAGS_COVERAGE": "--coverage",
+                "MY_CXX_FLAGS_COVERAGE": "--coverage"
+            }
+        },
+        {
+            "name": "gcc-sanitizer-flags",
+            "hidden": true,
+            "environment": {
+                "MY_C_FLAGS_SANITIZER": "-fsanitize=address -fsanitize=undefined",
+                "MY_CXX_FLAGS_SANITIZER": "-fsanitize=address -fsanitize=undefined"
+            }
+        },
+        {
+            "name": "clang-sanitizer-flags",
+            "hidden": true,
+            "inherits": [
+                "gcc-asan"
+            ]
+        },
+        {
+            "name": "msvc-sanitizer-flags",
+            "hidden": true,
+            "environment": {
+                "MY_C_FLAGS_SANITIZER": "/fsanitize=address",
+                "MY_CXX_FLAGS_SANITIZER": "/fsanitize=address"
+            }
+        },
+        {
             "name": "debug",
             "hidden": true,
             "cacheVariables": {
@@ -84,14 +115,6 @@
             "hidden": true,
             "cacheVariables": {
                 "CMAKE_BUILD_TYPE": "MinSizeRel"
-            }
-        },
-        {
-            "name": "gcov",
-            "hidden": true,
-            "environment": {
-                "MY_C_FLAGS_COVERAGE": "--coverage",
-                "MY_CXX_FLAGS_COVERAGE": "--coverage"
             }
         },
         {
@@ -141,6 +164,16 @@
             ]
         },
         {
+            "name": "gcc-sanitized",
+            "displayName": "GCC Sanitized (ASan, UBSan)",
+            "inherits": [
+                "base",
+                "gcc",
+                "debug",
+                "gcc-sanitizer-flags"
+            ]
+        },
+        {
             "name": "clang-debug",
             "displayName": "Clang Debug",
             "inherits": [
@@ -187,6 +220,16 @@
             ]
         },
         {
+            "name": "clang-sanitized",
+            "displayName": "Clang Sanitized (ASan, UBSan)",
+            "inherits": [
+                "base",
+                "clang",
+                "debug",
+                "clang-sanitzer-flags"
+            ]
+        },
+        {
             "name": "msvc-debug",
             "displayName": "MSVC Debug",
             "inherits": [
@@ -220,6 +263,16 @@
                 "base",
                 "msvc",
                 "minsizerel"
+            ]
+        },
+        {
+            "name": "msvc-sanitized",
+            "displayName": "MSVC Sanitized (ASan)",
+            "inherits": [
+                "base",
+                "clang",
+                "debug",
+                "msvc-sanitzer-flags"
             ]
         }
     ],
@@ -344,6 +397,14 @@
             ]
         },
         {
+            "name": "gcc-sanitized",
+            "displayName": "GCC Sanitized",
+            "configurePreset": "gcc-sanitized",
+            "inherits": [
+                "base"
+            ]
+        },
+        {
             "name": "clang-debug",
             "displayName": "Clang Debug",
             "configurePreset": "clang-debug",
@@ -384,6 +445,14 @@
             ]
         },
         {
+            "name": "clang-sanitized",
+            "displayName": "Clang Sanitized",
+            "configurePreset": "clang-sanitized",
+            "inherits": [
+                "base"
+            ]
+        },
+        {
             "name": "msvc-debug",
             "displayName": "MSVC Debug",
             "configurePreset": "msvc-debug",
@@ -411,6 +480,14 @@
             "name": "msvc-minsizerel",
             "displayName": "MSVC MinSizeRel",
             "configurePreset": "msvc-minsizerel",
+            "inherits": [
+                "base"
+            ]
+        },
+        {
+            "name": "msvc-sanitized",
+            "displayName": "MSVC Sanitized",
+            "configurePreset": "msvc-sanitized",
             "inherits": [
                 "base"
             ]
