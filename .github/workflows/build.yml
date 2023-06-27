@@ -13,6 +13,9 @@ jobs:
           - name: Windows Debug
             os: windows-latest
             preset: msvc-debug
+          - name: MacOS Debug
+            os: macos-latest
+            preset: clang-debug
     name: Build ${{ matrix.variant.name }}
     runs-on: ${{ matrix.variant.os }}
     steps:
