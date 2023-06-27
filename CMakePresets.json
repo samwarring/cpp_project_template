@@ -303,6 +303,11 @@
             "configurePreset": "gcc-coverage"
         },
         {
+            "name": "gcc-sanitized",
+            "displayName": "GCC Sanitized",
+            "configurePreset": "gcc-sanitized"
+        },
+        {
             "name": "clang-debug",
             "displayName": "Clang Debug",
             "configurePreset": "clang-debug"
@@ -328,6 +333,11 @@
             "configurePreset": "clang-coverage"
         },
         {
+            "name": "clang-sanitized",
+            "displayName": "Clang Sanitized",
+            "configurePreset": "clang-sanitized"
+        },
+        {
             "name": "msvc-debug",
             "displayName": "MSVC Debug",
             "configurePreset": "msvc-debug"
@@ -346,6 +356,11 @@
             "name": "msvc-minsizerel",
             "displayName": "MSVC MinSizeRel",
             "configurePreset": "msvc-minsizerel"
+        },
+        {
+            "name": "msvc-sanitized",
+            "displayName": "MSVC Sanitized",
+            "configurePreset": "msvc-sanitized"
         }
     ],
     "testPresets": [
