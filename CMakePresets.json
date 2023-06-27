@@ -10,7 +10,8 @@
             "cacheVariables": {
                 "CPP_PROJECT_TEMPLATE_TEST": "ON",
                 "CMAKE_C_FLAGS": "$env{MY_C_FLAGS} $env{MY_C_FLAGS_COVERAGE}",
-                "CMAKE_CXX_FLAGS": "$env{MY_CXX_FLAGS} $env{MY_CXX_FLAGS_COVERAGE}"
+                "CMAKE_CXX_FLAGS": "$env{MY_CXX_FLAGS} $env{MY_CXX_FLAGS_COVERAGE}",
+                "CMAKE_INSTALL_PREFIX": "${binaryDir}installed"
             }
         },
         {
