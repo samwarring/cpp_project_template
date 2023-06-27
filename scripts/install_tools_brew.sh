@@ -1,4 +1,4 @@
-sudo brew update
-sudo brew install \
+brew update
+brew install \
     cmake \
     ninja
