@@ -1,6 +1,6 @@
 name: Code Format
 on:
-  push:
+  workflow_call:
   workflow_dispatch:
 jobs:
   format:
