@@ -18,17 +18,18 @@ endif()
 message("---------------------------------------------------------------------")
 message("project path: ${PROJECT_DIR}")
 message("clang-format path: ${CLANG_FORMAT}")
-execute_process(COMMAND "${CLANG_FORMAT}" --version)
+execute_process(COMMAND "${CLANG_FORMAT}" --version COMMAND_ERROR_IS_FATAL ANY)
+file(GLOB_RECURSE SRC_FILES "${PROJECT_DIR}/*.cpp" "${PROJECT_DIR}/*.h"
+     "${PROJECT_DIR}/*.hpp")
+list(FILTER SRC_FILES EXCLUDE REGEX vcpkg/|build/)
+list(LENGTH SRC_FILES SRC_FILES_LENGTH)
+message("Formatting ${SRC_FILES_LENGTH} files...")
 message("---------------------------------------------------------------------")
 
-file(GLOB_RECURSE SRC_FILES "${PROJECT_DIR}/src/*.cpp" "${PROJECT_DIR}/src/*.h"
-     "${PROJECT_DIR}/src/*.hpp")
 foreach(SRC_FILE IN LISTS SRC_FILES)
   message("${SRC_FILE}")
-  # cmake-format: off
   execute_process(COMMAND "${CLANG_FORMAT}" -i "${SRC_FILE}"
-                  COMMAND_ERROR_IS_FATAL ANY)
-  # cmake-format: on
+                          COMMAND_ERROR_IS_FATAL ANY)
 endforeach()
 message("---------------------------------------------------------------------")
 message("OK!")
