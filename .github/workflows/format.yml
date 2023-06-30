@@ -1,0 +1,27 @@
+name: Code Format
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  format:
+    name: Code Format
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install tools
+        run: scripts/install_tools_apt.sh
+
+      - name: Format source files
+        run: cmake -P scripts/clang_format.cmake
+
+      - name: Check if formatting changes were required
+        id: check
+        run: git diff --exit-code >changes.diff
+
+      - name: Add changes to summary
+        if: steps.check.outcome == 'failure'
+        run: |
+          echo "# Changes required" >$GITHUB_STEP_SUMMARY
+          echo "```"               >>$GITHUB_STEP_SUMMARY
+          cat changes.diff         >>$GITHUB_STEP_SUMMARY
+          echo "```"               >>$GITHUB_STEP_SUMMARY
+
