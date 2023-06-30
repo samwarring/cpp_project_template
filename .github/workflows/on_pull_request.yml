@@ -7,7 +7,7 @@ jobs:
     name: Build
     uses: ./.github/workflows/build.yml
   format:
-    name: Format
+    name: Code Format
     uses: ./.github/workflows/format.yml
   overall:
     name: Pull Request Overall Status
