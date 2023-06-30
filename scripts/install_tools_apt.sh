@@ -3,4 +3,9 @@ sudo apt-get install \
     cmake \
     g++ \
     clang \
-    ninja-build
+    ninja-build \
+    curl \
+    zip \
+    unzip \
+    tar \
+    pkg-config
