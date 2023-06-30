@@ -21,10 +21,10 @@ jobs:
         run: git diff --exit-code >changes.diff
 
       - name: Add changes to summary
-        if: steps.check.outcome == 'failure'
+        if: always() && steps.check.outcome == 'failure'
         run: |
           echo "# Changes required" >$GITHUB_STEP_SUMMARY
-          echo "```"               >>$GITHUB_STEP_SUMMARY
+          echo '```'               >>$GITHUB_STEP_SUMMARY
           cat changes.diff         >>$GITHUB_STEP_SUMMARY
-          echo "```"               >>$GITHUB_STEP_SUMMARY
+          echo '```'               >>$GITHUB_STEP_SUMMARY
 
