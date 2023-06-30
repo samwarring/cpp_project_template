@@ -14,7 +14,7 @@ jobs:
         run: scripts/install_tools_apt.sh
 
       - name: Format source files
-        run: cmake -P scripts/clang_format.cmake
+        run: cmake -P scripts/code_format.cmake
 
       - name: Check if formatting changes were required
         id: check

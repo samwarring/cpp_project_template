@@ -1,5 +1,5 @@
 # cmake-format: off
-# Usage: cmake [-DCLANG_FORMAT=<path>] [-DCMAKE_FORMAT=<path>] -P clang_format.cmake
+# Usage: cmake [-DCLANG_FORMAT=<path>] [-DCMAKE_FORMAT=<path>] -P code_format.cmake
 # cmake-format: on
 
 # Get path to project root
