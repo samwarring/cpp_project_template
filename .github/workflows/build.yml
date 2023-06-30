@@ -1,6 +1,6 @@
 name: Build
 on:
-  push:
+  workflow_call:
   workflow_dispatch:
 jobs:
   build:
@@ -16,7 +16,7 @@ jobs:
           - name: MacOS Debug
             os: macos-latest
             preset: clang-sanitized
-    name: Build ${{ matrix.variant.name }}
+    name: ${{ matrix.variant.name }}
     runs-on: ${{ matrix.variant.os }}
     steps:
       - name: Checkout
