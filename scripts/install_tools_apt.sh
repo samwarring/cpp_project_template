@@ -8,4 +8,6 @@ sudo apt-get install \
     zip \
     unzip \
     tar \
-    pkg-config
+    pkg-config \
+    clang-format \
+    cmake-format
