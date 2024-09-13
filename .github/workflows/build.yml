@@ -5,10 +5,11 @@ on:
 jobs:
   build:
     strategy:
+      fail-fast: false
       matrix:
         variant:
           - name: Linux Debug
-            os: ubuntu-latest
+            os: ubuntu-24.04
             preset: gcc-sanitized
           - name: Windows Debug
             os: windows-latest
@@ -18,29 +19,23 @@ jobs:
             preset: clang-sanitized
     name: ${{ matrix.variant.name }}
     runs-on: ${{ matrix.variant.os }}
+    env:
+      VCPKG_ROOT: '${{ github.workspace }}/vcpkg'
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          submodules: recursive
+        uses: actions/checkout@v4
 
-      - name: Install required tools (apt)
-        if: runner.os == 'Linux'
-        run: scripts/install_tools_apt.sh
-
-      - name: Install required tools (brew)
-        if: runner.os == 'MacOS'
-        run: scripts/install_tools_brew.sh
+      - name: Install CMake
+        uses: lukka/get-cmake@v3.30.0
       
-      - name: Setup Visual Studio environment
-        if: runner.os == 'Windows'
-        uses: ilammy/msvc-dev-cmd@v1
+      - name: Install vcpkg
+        uses: lukka/run-vcpkg@v11
+        with:
+          vcpkgDirectory: '${{ env.VCPKG_ROOT }}'
 
-      - name: Configure
-        run: cmake --preset ${{ matrix.variant.preset }}
-
-      - name: Build
-        run: cmake --build --preset ${{ matrix.variant.preset }}
-
-      - name: Test
-        run: ctest --preset ${{ matrix.variant.preset }}
+      - name: Run CMake
+        uses: lukka/run-cmake@v10.7
+        with:
+          configurePreset: ${{ matrix.variant.preset }}
+          buildPreset: ${{ matrix.variant.preset }}
+          testPreset: ${{ matrix.variant.preset }}
