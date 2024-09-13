@@ -1,6 +1,10 @@
 {
     "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+    "$comments": [
+        "baseline = 2024.08.23 = 3508985146f1b1d248c67ead13f8f54be5b4f5da"
+    ],
     "name": "cpp-project-template",
+    "builtin-baseline": "3508985146f1b1d248c67ead13f8f54be5b4f5da",
     "dependencies": [
         "gtest"
     ]

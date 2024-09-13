@@ -6,7 +6,7 @@
             "hidden": true,
             "generator": "Ninja",
             "binaryDir": "build/${presetName}",
-            "toolchainFile": "vcpkg/scripts/buildsystems/vcpkg.cmake",
+            "toolchainFile": "$env{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake",
             "cacheVariables": {
                 "mymath_ENABLE_TEST": "ON",
                 "CMAKE_C_FLAGS": "$env{MY_C_FLAGS} $env{MY_C_FLAGS_COVERAGE} $env{MY_C_FLAGS_SANITIZER}",
