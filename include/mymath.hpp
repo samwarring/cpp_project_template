@@ -1,4 +1,8 @@
-#include <mymath.hpp>
+#ifndef INCLUDED_MYMATH_HPP
+#define INCLUDED_MYMATH_HPP
+
+#include <complex>
+#include <tuple>
 
 namespace mymath {
 
@@ -13,3 +17,5 @@ quadratic(double a, double b, double c) {
 }
 
 } // namespace mymath
+
+#endif

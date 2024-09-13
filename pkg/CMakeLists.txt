@@ -17,7 +17,7 @@ install(FILES "${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}-config.cmake"
 
 # Install targets and header files to their default installation destinations.
 # Also install a *-targets.cmake file next to the *-config.cmake file.
-install(DIRECTORY ${PROJECT_SOURCE_DIR}/src/mymath/include/public/ TYPE INCLUDE)
+install(DIRECTORY ${PROJECT_SOURCE_DIR}/include/ TYPE INCLUDE)
 install(TARGETS mymath EXPORT ${PROJECT_NAME}-targets)
 install(
   EXPORT ${PROJECT_NAME}-targets
